@@ -1,4 +1,18 @@
 import React from "react";
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Paper,
+  Box,
+} from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const UserInfo = ({
   id,
@@ -11,99 +25,123 @@ const UserInfo = ({
   company,
 }) => {
   return (
-    <div>
-      <table className="user-info">
-        <thead>
-          <tr>
-            <th colSpan="2">User Information</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>ID:</td>
-            <td>{id}</td>
-          </tr>
-          <tr>
-            <td>Name:</td>
-            <td>{name}</td>
-          </tr>
-          <tr>
-            <td>Username:</td>
-            <td>{username}</td>
-          </tr>
-          <tr>
-            <td>Email:</td>
-            <td>{email}</td>
-          </tr>
-          <tr>
-           
-          </tr>
-          <tr>
-            <td colSpan="2">
-              <h3>Address</h3>
-            </td>
-          </tr>
-          <tr>
-            <td>Street:</td>
-            <td>{address.street}</td>
-          </tr>
-          <tr>
-            <td>Suite:</td>
-            <td>{address.suite}</td>
-          </tr>
-          <tr>
-            <td>City:</td>
-            <td>{address.city}</td>
-          </tr>
-          <tr>
-            <td>Zipcode:</td>
-            <td>{address.zipcode}</td>
-          </tr>
-          <tr>
-          </tr>
-          <tr>
-            <td colSpan="2">
-              <h3>Geo</h3>
-            </td>
-          </tr>
-          <tr>
-            <td>Lat:</td>
-            <td>{address.geo.lat}</td>
-          </tr>
-          <tr>
-            <td>Lng:</td>
-            <td>{address.geo.lng}</td>
-          </tr>
-          <tr>
-            <td>Phone:</td>
-            <td>{phone}</td>
-          </tr>
-          <tr>
-            <td>Website:</td>
-            <td>{website}</td>
-          </tr>
-          <tr>
-          </tr>
-          <tr>
-            <td colSpan="2">
-              <h3>Company</h3>
-            </td>
-          </tr>
-          <tr>
-            <td>Name:</td>
-            <td>{company.name}</td>
-          </tr>
-          <tr>
-            <td>CatchPhrase:</td>
-            <td>{company.catchPhrase}</td>
-          </tr>
-          <tr>
-            <td>Bs:</td>
-            <td>{company.bs}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <Box marginBottom={4}>
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">User Information</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <TableContainer component={Paper}>
+            <Table className="user-info" aria-label="user information table">
+              <TableBody>
+                <TableRow>
+                  <TableCell>ID:</TableCell>
+                  <TableCell>{id}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Name:</TableCell>
+                  <TableCell>{name}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Username:</TableCell>
+                  <TableCell>{username}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Email:</TableCell>
+                  <TableCell>{email}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Phone:</TableCell>
+                  <TableCell>{phone}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Website</TableCell>
+                  <TableCell>{website}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Address</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <TableContainer component={Paper}>
+            <Table className="user-info" aria-label="address information table">
+              <TableBody>
+                <TableRow>
+                  <TableCell>Street:</TableCell>
+                  <TableCell>{address.street}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Suite:</TableCell>
+                  <TableCell>{address.suite}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>City:</TableCell>
+                  <TableCell>{address.city}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Zipcode:</TableCell>
+                  <TableCell>{address.zipcode}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Geo Details</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <TableContainer component={Paper}>
+            <Table className="user-info" aria-label="geo information table">
+              <TableBody>
+                <TableRow>
+                  <TableCell>Lat:</TableCell>
+                  <TableCell>{address.geo.lat}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Lng:</TableCell>
+                  <TableCell>{address.geo.lng}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </AccordionDetails>
+      </Accordion>
+
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography variant="h6">Company</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <TableContainer component={Paper}>
+            <Table className="user-info" aria-label="company information table">
+              <TableBody>
+                <TableRow>
+                  <TableCell>Name:</TableCell>
+                  <TableCell>{company.name}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>CatchPhrase:</TableCell>
+                  <TableCell>{company.catchPhrase}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Bs:</TableCell>
+                  <TableCell>{company.bs}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </AccordionDetails>
+      </Accordion>
+    </Box>
   );
 };
 

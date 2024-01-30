@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Item from "@mui/material/ListItem";
+
+// Css
 import "./Contact.css";
+
+// Component
 import UserInfo from "../Component/UserInfo.js";
+
+// Api
 import { fetchUsers } from "../api/api.js";
 
 function Contact() {
@@ -37,15 +47,30 @@ function Contact() {
   return (
     <div>
       <h2>Contatos</h2>
-      <form>
-        <input
-          value={query}
-          type="text"
-          placeholder="Digite neste campo"
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <button onClick={handleSubmit}>Buscar</button>
-      </form>
+      <Grid container spacing={0}>
+        <Grid item xs>
+          <Item>
+            <TextField
+              size="small"
+              value={query}
+              type="text"
+              placeholder="Digite neste campo"
+              onChange={(e) => setQuery(e.target.value)}
+              id="outlined-basic"
+              label="Pesquisar"
+              variant="outlined"
+              fullWidth
+            />
+          </Item>
+        </Grid>
+        <Grid item xs='auto'>
+          <Item>
+            <Button onClick={handleSubmit} variant="contained" >
+              Buscar
+            </Button>
+          </Item>
+        </Grid>
+      </Grid>
       {usersResults &&
         usersResults.map((user) => (
           <UserInfo
